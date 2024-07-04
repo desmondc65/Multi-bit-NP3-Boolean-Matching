@@ -1,0 +1,66 @@
+*********************************************
+read strash aig cnf
+
+reading verilog: c1
+verilog is read: c1
+
+printing stats of: c1 before strashing
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  nd =     9  edge =     16  aig  =    13  lev = 3
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c1
+
+printing stats of: c1 after strashing
+Structural support info:
+    0                    h0 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+    1                    h1 :  Cone =     5.  Supp =     4. (PIs =     4. FFs =     0.)
+    2                    m0 :  Cone =     2.  Supp =     3. (PIs =     3. FFs =     0.)
+    3                    m1 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  and =     12  lev =  3
+
+constructing AIG of: c1
+AIG is constructed: c1
+
+constructing CNF of: c1
+CNF is constructed: c1
+
+constructing simplied verilog of: c1
+Verilog file is saved: c1
+
+*********************************************
+
+*********************************************
+read strash aig cnf
+
+reading verilog: c2
+verilog is read: c2
+
+printing stats of: c2 before strashing
+CNF stats: Vars =     14. Clauses =      29. Literals =       69.   Time =     0.01 sec
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  nd =     7  edge =     14  aig  =    13  lev = 2
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c2
+
+printing stats of: c2 after strashing
+Structural support info:
+    0                    u0 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+    1                    u1 :  Cone =     3.  Supp =     4. (PIs =     4. FFs =     0.)
+    2                    w0 :  Cone =     2.  Supp =     3. (PIs =     3. FFs =     0.)
+    3                    w1 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  and =     12  lev =  3
+
+constructing AIG of: c2
+AIG is constructed: c2
+
+constructing CNF of: c2
+CNF is constructed: c2
+
+constructing simplied verilog of: c2
+Verilog file is saved: c2
+
+*********************************************
+
+CNF stats: Vars =     14. Clauses =      29. Literals =       69.   Time =     0.00 sec

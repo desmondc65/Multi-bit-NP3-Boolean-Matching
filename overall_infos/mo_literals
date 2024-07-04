@@ -1,0 +1,5 @@
+this file contains the literals no of the MO mapping
+0 c11 : 95 m1 w1 1 d11 : 96 m1 w1 2 c12 : 97 h0 w1 3 d12 : 98 h0 w1 4 c13 : 99 m0 w1 5 d13 : 100 m0 w1 6 c14 : 101 h1 w1 7 d14 : 102 h1 w1 
+0 c21 : 103 m1 u0 1 d21 : 104 m1 u0 2 c22 : 105 h0 u0 3 d22 : 106 h0 u0 4 c23 : 107 m0 u0 5 d23 : 108 m0 u0 6 c24 : 109 h1 u0 7 d24 : 110 h1 u0 
+0 c31 : 111 m1 w0 1 d31 : 112 m1 w0 2 c32 : 113 h0 w0 3 d32 : 114 h0 w0 4 c33 : 115 m0 w0 5 d33 : 116 m0 w0 6 c34 : 117 h1 w0 7 d34 : 118 h1 w0 
+0 c41 : 119 m1 u1 1 d41 : 120 m1 u1 2 c42 : 121 h0 u1 3 d42 : 122 h0 u1 4 c43 : 123 m0 u1 5 d43 : 124 m0 u1 6 c44 : 125 h1 u1 7 d44 : 126 h1 u1 

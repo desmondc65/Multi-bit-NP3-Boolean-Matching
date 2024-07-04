@@ -1,0 +1,13 @@
+This file contains the assigns of c1
+  assign h0 = a0 & b0;
+  assign new_n11_ = a1 & b0;
+  assign new_n12_ = a0 & b1;
+  assign new_n13_ = new_n11_ & ~new_n12_;
+  assign new_n14_ = ~new_n11_ & new_n12_;
+  assign h1 = new_n13_ | new_n14_;
+  assign new_n16_ = b0 & c;
+  assign new_n17_ = ~b1 & ~new_n16_;
+  assign new_n18_ = b1 & new_n16_;
+  assign m0 = ~new_n17_ & ~new_n18_;
+  assign new_n20_ = ~b0 & ~c;
+  assign m1 = ~new_n16_ & ~new_n20_;

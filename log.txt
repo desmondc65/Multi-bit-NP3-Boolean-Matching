@@ -1,0 +1,38 @@
+verilog of c1_data/c1_new.v parsed
+
+verilog of c2_data/c2_new.v parsed
+
+writing pi po and assigns of c1
+
+writing pi po and assigns of c2
+
+Preprocess Time: 949 milliseconds
+
+getting po support size
+
+verilog to cnf of c1 done
+
+verilog to cnf of c2 done
+
+assigning literals to mi mapping
+
+generating constraint 3 of NP3 Boolean Matching: ensures every input of g should be mapped to either an input of f or a constant
+
+generating constraint 5 of NP3 Boolean Matching: MI mapping
+
+assigning literals to mo mapping
+
+generating constraint 1 of NP3 Boolean Matching: at least a pair of outputs should be matched
+
+generating constraint 4 of NP3 Boolean Matching: MO Mapping
+
+generating constraint of picked mo
+
+configuring_projection: 
+
+printing clauses of projection
+
+Execution time: 1083 milliseconds
+
+total time: 2033 milliseconds
+

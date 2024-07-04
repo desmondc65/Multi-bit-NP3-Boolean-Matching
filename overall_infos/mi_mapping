@@ -1,0 +1,6 @@
+this file contains the mi mapping
+a11 a0 x0; b11 a0 x0; a12 a1 x0; b12 a1 x0; a13 b1 x0; b13 b1 x0; a14 b0 x0; b14 b0 x0; a15 c x0; b15 c x0; a16 0 x0; b16 1 x0; 
+a21 a0 x1; b21 a0 x1; a22 a1 x1; b22 a1 x1; a23 b1 x1; b23 b1 x1; a24 b0 x1; b24 b0 x1; a25 c x1; b25 c x1; a26 0 x1; b26 1 x1; 
+a31 a0 y0; b31 a0 y0; a32 a1 y0; b32 a1 y0; a33 b1 y0; b33 b1 y0; a34 b0 y0; b34 b0 y0; a35 c y0; b35 c y0; a36 0 y0; b36 1 y0; 
+a41 a0 y1; b41 a0 y1; a42 a1 y1; b42 a1 y1; a43 b1 y1; b43 b1 y1; a44 b0 y1; b44 b0 y1; a45 c y1; b45 c y1; a46 0 y1; b46 1 y1; 
+a51 a0 z; b51 a0 z; a52 a1 z; b52 a1 z; a53 b1 z; b53 b1 z; a54 b0 z; b54 b0 z; a55 c z; b55 c z; a56 0 z; b56 1 z; 
