@@ -1,39 +1,6 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#ifndef preprocess_h
-#define preprocess_h
-#endif
+#include "preprocess.h"
 
-using namespace std;
-
-#if defined(ABC_NAMESPACE)
-namespace ABC_NAMESPACE
-{
-#elif defined(__cplusplus)
-extern "C"
-{
-#endif
-
-// procedures to start and stop the ABC framework
-// (should be called before and after the ABC procedures are called)
-void   Abc_Start();
-void   Abc_Stop();
-
-// procedures to get the ABC framework and execute commands in it
-typedef struct Abc_Frame_t_ Abc_Frame_t;
-Abc_Frame_t * Abc_FrameGetGlobalFrame();
-int Cmd_CommandExecute( Abc_Frame_t * pAbc, const char * sCommand );
-#if defined(ABC_NAMESPACE)
-}
-using namespace ABC_NAMESPACE;
-#elif defined(__cplusplus)
-}
-#endif
-
-void read_input(string& input_name, string& c1_path_v, int& c1_number_of_inputs,string& c2_path_v, int& c2_number_of_inputs, vector<int>& c1_bus_size_input, vector<int>& c2_bus_size_input, vector<string>& c1_bus_input_1, vector<string>& c2_bus_input_1, vector<string>& c1_bus_input_2, vector<string>& c2_bus_input_2){
+void read_input(string& input_name, circuit_info& c1, circuit_info& c2){
 
     ifstream infile;
     infile.open(input_name);
@@ -43,32 +10,30 @@ void read_input(string& input_name, string& c1_path_v, int& c1_number_of_inputs,
     }
     
     //read circ 1 info
-    infile >> c1_path_v;
-    infile >> c1_number_of_inputs;
+    infile >> c1.path_v;
+    infile >> c1.no_of_pis;
     string line;
-    c1_bus_size_input.resize(c1_number_of_inputs);
-    c1_bus_input_1.resize(c1_number_of_inputs);
-    c1_bus_input_2.resize(c1_number_of_inputs);
+    c1.bus_size_input.resize(c1.no_of_pis);
+    c1.bus_input.resize(c1.no_of_pis);
     getline(infile, line);
-    for(int i = 0; i < c1_number_of_inputs; i++){
+    for(int i = 0; i < c1.no_of_pis; i++){
         getline(infile, line);
         istringstream iss(line);
-        iss >> c1_bus_size_input[i] >> c1_bus_input_1[i] >> c1_bus_input_2[i];
+        iss >> c1.bus_size_input[i] >> c1.bus_input[i].first >> c1.bus_input[i].second;
         //cout << c1_bus_size_input[i] << c1_bus_input_1[i] << c1_bus_input_2[i];
         //cout << line << endl;
     }
 
     //read circ 2 info
-    infile >> c2_path_v;
-    infile >> c2_number_of_inputs;
-    c2_bus_size_input.resize(c1_number_of_inputs);
-    c2_bus_input_1.resize(c1_number_of_inputs);
-    c2_bus_input_2.resize(c1_number_of_inputs);
+    infile >> c2.path_v;
+    infile >> c2.no_of_pis;
+    c2.bus_input.resize(c2.no_of_pis);
+    c2.bus_size_input.resize(c2.no_of_pis);
     getline(infile, line);
-    for(int i = 0; i < c2_number_of_inputs; i++){
+    for(int i = 0; i < c2.no_of_pis; i++){
         getline(infile, line);
         istringstream iss(line);
-        iss >> c2_bus_size_input[i] >> c2_bus_input_1[i] >> c2_bus_input_2[i];
+        iss >> c2.bus_size_input[i] >> c2.bus_input[i].first >> c2.bus_input[i].second;
         //cout << c2_bus_size_input[i] << c2_bus_input_1[i] << c2_bus_input_2[i];
         //cout << line << endl;
     }
@@ -93,9 +58,9 @@ string removeSecondWord(const string& str) {
     return result;
 }
 
-void prepare_input(string&intput_circuit_path, string& output_circuit_path){
-    ifstream inputFile(intput_circuit_path);
-    ofstream outputFile(output_circuit_path + "_new.v");
+void prepare_input(circuit_info& cir){
+    ifstream inputFile(cir.path_v);
+    ofstream outputFile(cir.name + "_new.v");
     if (!inputFile || !outputFile) {
         cerr << "Error opening files." << endl;
         exit(1);
@@ -154,42 +119,49 @@ void prepare_input(string&intput_circuit_path, string& output_circuit_path){
     }
     inputFile.close();
     outputFile.close();
-    cout << "no of PIs in " << intput_circuit_path << " is " << no_input << endl << endl;
+    cout << "no of PIs in " << cir.name << " is " << no_input << endl << endl;
     return;
 }
 
-void read_strash_aig_cnf(Abc_Frame_t * pAbc, string name_of_circuit){
+void read_strash_aig_cnf(Abc_Frame_t * pAbc, circuit_info& cir){
     int status;
     cout << "*********************************************" << endl;
     cout << "read strash aig cnf" << endl << endl;
 
-    cout << "reading verilog: " << name_of_circuit << endl; 
-    string command = "read_verilog " + name_of_circuit + "_new.v";
+    cout << "reading verilog: " << cir.name << endl; 
+    string command = "read_verilog " + cir.name + "_new.v";
     status = Cmd_CommandExecute(pAbc, command.c_str());
     if (status) {
         fprintf(stderr, "Cannot execute the command 'read_verilog'.\n");
         exit(0);
     }
-    cout << "verilog is read: " << name_of_circuit << endl;
+    cout << "verilog is read: " << cir.name << endl;
 
-    cout << endl << "printing stats of: " << name_of_circuit << " before strashing" << endl;
+    cout << endl << "printing stats of: " << cir.name << " before strashing" << endl;
     status = Cmd_CommandExecute(pAbc, "print_stats");
     if (status) {
         fprintf(stderr, "Cannot execute the command 'print_stats'.\n");
         exit(0);
     }
     cout << endl;
+
+    status = Cmd_CommandExecute(pAbc, "print_supp");
+    if (status) {
+        fprintf(stderr, "Cannot execute the command 'print_supp'.\n");
+        exit(0);
+    }
+    cout << endl;
     
-    cout << "strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: " << name_of_circuit << endl; 
+    cout << "strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: " << cir.new_path << endl; 
     command = "strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;";
     status = Cmd_CommandExecute(pAbc, command.c_str());
     if (status) {
         fprintf(stderr, "Cannot execute the command 'strash'.\n");
         exit(0);
     }
-    cout << "circuit simplification done:" << name_of_circuit << endl; 
+    cout << "circuit simplification done:" << cir.name << endl; 
 
-    cout << endl << "printing stats of: " << name_of_circuit << " after strashing" << endl;
+    cout << endl << "printing stats of: " << cir.name << " after strashing" << endl;
     status = Cmd_CommandExecute(pAbc, "print_stats");
     if (status) {
         fprintf(stderr, "Cannot execute the command 'print_stats'.\n");
@@ -197,41 +169,56 @@ void read_strash_aig_cnf(Abc_Frame_t * pAbc, string name_of_circuit){
     }
     cout << endl;
 
-    cout << "constructing AIG of: " << name_of_circuit << endl; 
-    command = "write_aiger " + name_of_circuit + "_aig.aig";
+    cout << "constructing AIG of: " << cir.name << endl; 
+    command = "write_aiger " + cir.name + "_aig.aig";
     status = Cmd_CommandExecute(pAbc, command.c_str());
     if (status) {
         fprintf(stderr, "Cannot execute the command 'write_aiger'.\n");
         exit(0);
     }
-    cout << "AIG is constructed: " << name_of_circuit << endl << endl;
+    cout << "AIG is constructed: " << cir.name << endl << endl;
 
-    cout << "reading verilog: " << name_of_circuit << endl; 
-    command = "read_verilog " + name_of_circuit + "_new.v";
-    status = Cmd_CommandExecute(pAbc, command.c_str());
-    if (status) {
-        fprintf(stderr, "Cannot execute the command 'read_verilog'.\n");
-        exit(0);
-    }
-    cout << "verilog is read: " << name_of_circuit << endl;
-
-    cout << "constructing CNF of: " << name_of_circuit << endl; 
-    command = "write_cnf "  + name_of_circuit + "_cnf.cnf";
+    cout << "constructing CNF of: " << cir.name << endl; 
+    command = "write_cnf "  + cir.name + "_cnf.cnf";
     status = Cmd_CommandExecute(pAbc, command.c_str());
     if (status) {
         fprintf(stderr, "Cannot execute the command 'write_cnf'.\n");
         exit(0);
     }
-    cout << "CNF is constructed: " << name_of_circuit << endl << endl; 
+    
+    cout << "CNF is constructed: " << cir.name << endl << endl; 
 
-    cout << "constructing simplied verilog of: " << name_of_circuit << endl; 
-    command = "write_verilog " + name_of_circuit + "_simplified.v";
+    cout << "constructing simplied verilog of: " << cir.name << endl; 
+    command = "write_verilog " + cir.name + "_simplified.v";
     status = Cmd_CommandExecute(pAbc, command.c_str());
     if (status) {
         fprintf(stderr, "Cannot execute the command 'write_verilog'.\n");
         exit(0);
     }
-    cout << "Verilog file is saved: " << name_of_circuit << endl << endl; 
+    cout << "Verilog file is saved: " << cir.name << endl << endl; 
+ 
+    string folderName =   cir.name + "_data/";
+    cir.folder_name = folderName;
+    int folderCreated = mkdir(folderName.c_str(), 0777);
+    string old_path = cir.name + "_aig.aig";
+    string new_path = folderName + cir.name + "_aig.aig";
+    cir.aig_path = new_path;
+    rename( old_path.c_str() , new_path.c_str());
+
+    old_path = cir.name + "_cnf.cnf";
+    new_path = folderName + cir.name + "_cnf_abc.cnf";
+    cir.cnf_path = new_path;
+    rename( old_path.c_str() , new_path.c_str());
+
+    old_path = cir.name + "_simplified.v";
+    new_path = folderName + cir.name +"_simplified.v";
+    cir.simplified_v = new_path;
+    rename( old_path.c_str() , new_path.c_str());
+
+    old_path = cir.name + "_new.v";
+    new_path = folderName + cir.name +"_new.v";
+    cir.new_path = new_path;
+    rename( old_path.c_str() , new_path.c_str());
     
     cout << "*********************************************" << endl << endl;
 }

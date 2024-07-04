@@ -1,16 +1,4 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <unordered_set>
-#include <utility>
-#include <sys/types.h>
-#include <sys/stat.h>
-
-#ifndef verilog_parser_h
-#define verilog_parser_h
-#endif
+#include "verilog_parser.h"
 
 using namespace std;
 
@@ -30,8 +18,8 @@ void get_pi(string line, vector<string>& vec_pis){
     }
 }
 
-void verilog_parser(string intput_circuit_path, vector<string>& verilog_assigns, vector<string>& vec_pis, vector<string>& vec_pos, string cir_name){
-    ifstream inputFile(intput_circuit_path);
+void verilog_parser(circuit_info& cir){
+    ifstream inputFile(cir.simplified_v);
     string line;
     string check_first_element;
     
@@ -49,7 +37,7 @@ void verilog_parser(string intput_circuit_path, vector<string>& verilog_assigns,
     }
     //extract pis
     while(check_first_element != "output"){
-        get_pi(line, vec_pis);
+        get_pi(line, cir.pis_name);
         //cout << line << endl;
         getline(inputFile, line);
         istringstream iss(line);
@@ -61,7 +49,7 @@ void verilog_parser(string intput_circuit_path, vector<string>& verilog_assigns,
 
     //extract pos
     while(check_first_element != "wire"){
-        get_pi(line, vec_pos);
+        get_pi(line, cir.pos_name);
         getline(inputFile, line);
         istringstream iss(line);
         iss >> check_first_element;
@@ -79,29 +67,40 @@ void verilog_parser(string intput_circuit_path, vector<string>& verilog_assigns,
     //get all lines
     while(check_first_element == "assign"){
         
-        verilog_assigns.emplace_back(line);
+        cir.assigns.emplace_back(line);
         getline(inputFile, line);
         istringstream iss(line);
         iss >> check_first_element;
     }
-    //print_vector_string(verilog_assigns);
-
-    string folderName =   cir_name + "_data/";
-    int folderCreated = mkdir(folderName.c_str(), 0777);
-    string old_path = cir_name + "_aig.aig";
-    string new_path = folderName + cir_name + "_aig.aig";
-    rename( old_path.c_str() , new_path.c_str());
-
-    old_path = cir_name + "_cnf.cnf";
-    new_path = folderName + cir_name + "_cnf.cnf";
-    rename( old_path.c_str() , new_path.c_str());
-
-    old_path = cir_name + "_simplified.v";
-    new_path = folderName + cir_name +"_simplified.v";
-    rename( old_path.c_str() , new_path.c_str());
-
-    old_path = cir_name + "_new.v";
-    new_path = folderName + cir_name +"_new.v";
-    rename( old_path.c_str() , new_path.c_str());
+    cir.no_of_pis = cir.pis_name.size();
+    cir.no_of_pos = cir.pos_name.size();
+    cout << "verilog of " << cir.new_path << " parsed" << endl << endl;
 }
 
+//separate pis and commands of each po
+void write_pi_po_assigns(circuit_info& cir){
+    cout << "writing pi po and assigns of " << cir.name << endl << endl;
+    string path = cir.folder_name + cir.name  + "_pi";
+    ofstream outputfile(path);
+    outputfile << "This file contains the PIs of " + cir.name << endl;
+    for(auto i : cir.pis_name){
+        outputfile << i << endl;
+    }
+    outputfile.close();
+
+    path = cir.folder_name + cir.name + "_po";
+    ofstream outputfile2(path);
+    outputfile2 << "This file contains the POs of " + cir.name << endl;
+    for(auto i : cir.pos_name){
+        outputfile2 << i << endl;
+    }
+    outputfile2.close();
+
+    path = cir.folder_name + cir.name + "_assigns";
+    ofstream outputfile3(path);
+    outputfile3 << "This file contains the assigns of " + cir.name << endl;
+    for(auto i : cir.assigns){
+        outputfile3 << i << endl;
+    }
+    outputfile3.close();
+}

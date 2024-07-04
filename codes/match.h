@@ -1,3 +1,5 @@
+#ifndef MATCH_H
+#define MATCH_H
 
 #include <iostream>
 #include <stdio.h>
@@ -14,11 +16,11 @@
 #include <utility>
 #include <set>
 
-#ifndef match_h
-#define match_h
-#endif
-
 using namespace std;
+
+class IN_Group;
+class OUT_Group;
+class CONST_Group;
 
 //elements for mappings
 class Match {
@@ -40,22 +42,10 @@ public:
     }
 
     // Member function to set the private variables
-    void setMatch(vector<pair<pair<string, bool>, pair<string, bool>>>& pi1) {
-        pi_match = pi1;
-    }
+    void setMatch(vector<pair<pair<string, bool>, pair<string, bool>>>& pi1);
 
-    void printMatch() const {
-        cout << "Circuit 1 PO Name: " << circuit_1_po_name << endl;
-        cout << "Circuit 2 PO Name: " << circuit_2_po_name << endl;
-        cout << "Circuit 1 Negation: " << (circuit_1_negation ? "True" : "False") << endl;
-        cout << "Circuit 2 Negation: " << (circuit_2_negation ? "True" : "False") << endl;
-
-        cout << "PI Match: " << endl;
-        for (const auto& pi : pi_match) {
-            cout << "PI 1 - Name: " << pi.first.first << ", Negation: " << (pi.first.second ? "True" : "False") << " and ";
-            cout << "PI 2 - Name: " << pi.second.first << ", Negation: " << (pi.second.second ? "True" : "False") << endl;
-        }
-    }
+    // print matching info
+    void printMatch() const;
 };
-vector<Match> matches;
-int match_count = 0;
+
+#endif
