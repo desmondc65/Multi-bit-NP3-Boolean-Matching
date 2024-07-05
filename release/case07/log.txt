@@ -1,0 +1,133 @@
+no of PIs in c1 is 12
+
+no of PIs in c2 is 14
+
+*********************************************
+read strash aig cnf
+
+reading verilog: c1
+verilog is read: c1
+
+printing stats of: c1 before strashing
+[1;37mtop                           :[0m i/o =   12/    8  lat =    0  nd =    72  edge =    127  aig  =    61  lev = 12
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c1
+
+printing stats of: c1 after strashing
+Structural support info:
+    0                    n4 :  Cone =    48.  Supp =    12. (PIs =    12. FFs =     0.)
+    1                   n10 :  Cone =    57.  Supp =    12. (PIs =    12. FFs =     0.)
+    2                   n33 :  Cone =    48.  Supp =    12. (PIs =    12. FFs =     0.)
+    3                   n39 :  Cone =    37.  Supp =    10. (PIs =    10. FFs =     0.)
+    4                   n66 :  Cone =    21.  Supp =     8. (PIs =     8. FFs =     0.)
+    5                   n70 :  Cone =    14.  Supp =     6. (PIs =     6. FFs =     0.)
+    6                   n71 :  Cone =    31.  Supp =    10. (PIs =    10. FFs =     0.)
+    7                   n79 :  Cone =    62.  Supp =    12. (PIs =    12. FFs =     0.)
+[1;37mtop                           :[0m i/o =   12/    8  lat =    0  and =     61  lev = 10
+
+
+constructing AIG of: c1
+AIG is constructed: c1
+
+constructing CNF of: c1
+CNF is constructed: c1
+
+constructing simplied verilog of: c1
+Verilog file is saved: c1
+
+*********************************************
+
+*********************************************
+read strash aig cnf
+
+reading verilog: c2
+verilog is read: c2
+
+printing stats of: c2 before strashing
+Shared BDD size =    385 nodes.
+Ins/Outs =   12/   8.  Total supp =    82.  Total unate =    30.
+Glob BDDs =     0.00 sec
+Unateness =     0.00 sec
+Total     =     0.00 sec
+CNF stats: Vars =     38. Clauses =     107. Literals =      290.   Time =     0.00 sec
+[1;37mtop                           :[0m i/o =   14/    8  lat =    0  nd =    77  edge =    141  aig  =    80  lev = 14
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c2
+
+printing stats of: c2 after strashing
+Structural support info:
+    0                    n6 :  Cone =    14.  Supp =     8. (PIs =     8. FFs =     0.)
+    1                    n9 :  Cone =    39.  Supp =    12. (PIs =    12. FFs =     0.)
+    2                   n42 :  Cone =    28.  Supp =    10. (PIs =    10. FFs =     0.)
+    3                   n48 :  Cone =    41.  Supp =    12. (PIs =    12. FFs =     0.)
+    4                   n56 :  Cone =    69.  Supp =    14. (PIs =    14. FFs =     0.)
+    5                   n65 :  Cone =    53.  Supp =    14. (PIs =    14. FFs =     0.)
+    6                   n68 :  Cone =    51.  Supp =    13. (PIs =    13. FFs =     0.)
+    7                   n77 :  Cone =    23.  Supp =    10. (PIs =    10. FFs =     0.)
+[1;37mtop                           :[0m i/o =   14/    8  lat =    0  and =     80  lev = 12
+
+
+constructing AIG of: c2
+AIG is constructed: c2
+
+constructing CNF of: c2
+CNF is constructed: c2
+
+constructing simplied verilog of: c2
+Verilog file is saved: c2
+
+*********************************************
+
+verilog of c1_data/c1_new.v parsed
+
+verilog of c2_data/c2_new.v parsed
+
+writing pi po and assigns of c1
+
+writing pi po and assigns of c2
+
+Preprocess Time: 49 milliseconds
+*********************************************
+ printing input mapping matrix 
+
+n0 n2 a 1 1 n0 n2 b 1 1 n3 n2 a 1 2 n3 n2 b 1 2 n11 n2 a 1 3 n11 n2 b 1 3 n15 n2 a 1 4 n15 n2 b 1 4 n21 n2 a 1 5 n21 n2 b 1 5 n35 n2 a 1 6 n35 n2 b 1 6 n36 n2 a 1 7 n36 n2 b 1 7 n37 n2 a 1 8 n37 n2 b 1 8 n41 n2 a 1 9 n41 n2 b 1 9 n61 n2 a 1 10 n61 n2 b 1 10 n73 n2 a 1 11 n73 n2 b 1 11 n80 n2 a 1 12 n80 n2 b 1 12 0 n2 a 1 13 1 n2 b 1 13 
+n0 n4 a 2 1 n0 n4 b 2 1 n3 n4 a 2 2 n3 n4 b 2 2 n11 n4 a 2 3 n11 n4 b 2 3 n15 n4 a 2 4 n15 n4 b 2 4 n21 n4 a 2 5 n21 n4 b 2 5 n35 n4 a 2 6 n35 n4 b 2 6 n36 n4 a 2 7 n36 n4 b 2 7 n37 n4 a 2 8 n37 n4 b 2 8 n41 n4 a 2 9 n41 n4 b 2 9 n61 n4 a 2 10 n61 n4 b 2 10 n73 n4 a 2 11 n73 n4 b 2 11 n80 n4 a 2 12 n80 n4 b 2 12 0 n4 a 2 13 1 n4 b 2 13 
+n0 n12 a 3 1 n0 n12 b 3 1 n3 n12 a 3 2 n3 n12 b 3 2 n11 n12 a 3 3 n11 n12 b 3 3 n15 n12 a 3 4 n15 n12 b 3 4 n21 n12 a 3 5 n21 n12 b 3 5 n35 n12 a 3 6 n35 n12 b 3 6 n36 n12 a 3 7 n36 n12 b 3 7 n37 n12 a 3 8 n37 n12 b 3 8 n41 n12 a 3 9 n41 n12 b 3 9 n61 n12 a 3 10 n61 n12 b 3 10 n73 n12 a 3 11 n73 n12 b 3 11 n80 n12 a 3 12 n80 n12 b 3 12 0 n12 a 3 13 1 n12 b 3 13 
+n0 n18 a 4 1 n0 n18 b 4 1 n3 n18 a 4 2 n3 n18 b 4 2 n11 n18 a 4 3 n11 n18 b 4 3 n15 n18 a 4 4 n15 n18 b 4 4 n21 n18 a 4 5 n21 n18 b 4 5 n35 n18 a 4 6 n35 n18 b 4 6 n36 n18 a 4 7 n36 n18 b 4 7 n37 n18 a 4 8 n37 n18 b 4 8 n41 n18 a 4 9 n41 n18 b 4 9 n61 n18 a 4 10 n61 n18 b 4 10 n73 n18 a 4 11 n73 n18 b 4 11 n80 n18 a 4 12 n80 n18 b 4 12 0 n18 a 4 13 1 n18 b 4 13 
+n0 n22 a 5 1 n0 n22 b 5 1 n3 n22 a 5 2 n3 n22 b 5 2 n11 n22 a 5 3 n11 n22 b 5 3 n15 n22 a 5 4 n15 n22 b 5 4 n21 n22 a 5 5 n21 n22 b 5 5 n35 n22 a 5 6 n35 n22 b 5 6 n36 n22 a 5 7 n36 n22 b 5 7 n37 n22 a 5 8 n37 n22 b 5 8 n41 n22 a 5 9 n41 n22 b 5 9 n61 n22 a 5 10 n61 n22 b 5 10 n73 n22 a 5 11 n73 n22 b 5 11 n80 n22 a 5 12 n80 n22 b 5 12 0 n22 a 5 13 1 n22 b 5 13 
+n0 n34 a 6 1 n0 n34 b 6 1 n3 n34 a 6 2 n3 n34 b 6 2 n11 n34 a 6 3 n11 n34 b 6 3 n15 n34 a 6 4 n15 n34 b 6 4 n21 n34 a 6 5 n21 n34 b 6 5 n35 n34 a 6 6 n35 n34 b 6 6 n36 n34 a 6 7 n36 n34 b 6 7 n37 n34 a 6 8 n37 n34 b 6 8 n41 n34 a 6 9 n41 n34 b 6 9 n61 n34 a 6 10 n61 n34 b 6 10 n73 n34 a 6 11 n73 n34 b 6 11 n80 n34 a 6 12 n80 n34 b 6 12 0 n34 a 6 13 1 n34 b 6 13 
+n0 n35 a 7 1 n0 n35 b 7 1 n3 n35 a 7 2 n3 n35 b 7 2 n11 n35 a 7 3 n11 n35 b 7 3 n15 n35 a 7 4 n15 n35 b 7 4 n21 n35 a 7 5 n21 n35 b 7 5 n35 n35 a 7 6 n35 n35 b 7 6 n36 n35 a 7 7 n36 n35 b 7 7 n37 n35 a 7 8 n37 n35 b 7 8 n41 n35 a 7 9 n41 n35 b 7 9 n61 n35 a 7 10 n61 n35 b 7 10 n73 n35 a 7 11 n73 n35 b 7 11 n80 n35 a 7 12 n80 n35 b 7 12 0 n35 a 7 13 1 n35 b 7 13 
+n0 n51 a 8 1 n0 n51 b 8 1 n3 n51 a 8 2 n3 n51 b 8 2 n11 n51 a 8 3 n11 n51 b 8 3 n15 n51 a 8 4 n15 n51 b 8 4 n21 n51 a 8 5 n21 n51 b 8 5 n35 n51 a 8 6 n35 n51 b 8 6 n36 n51 a 8 7 n36 n51 b 8 7 n37 n51 a 8 8 n37 n51 b 8 8 n41 n51 a 8 9 n41 n51 b 8 9 n61 n51 a 8 10 n61 n51 b 8 10 n73 n51 a 8 11 n73 n51 b 8 11 n80 n51 a 8 12 n80 n51 b 8 12 0 n51 a 8 13 1 n51 b 8 13 
+n0 n57 a 9 1 n0 n57 b 9 1 n3 n57 a 9 2 n3 n57 b 9 2 n11 n57 a 9 3 n11 n57 b 9 3 n15 n57 a 9 4 n15 n57 b 9 4 n21 n57 a 9 5 n21 n57 b 9 5 n35 n57 a 9 6 n35 n57 b 9 6 n36 n57 a 9 7 n36 n57 b 9 7 n37 n57 a 9 8 n37 n57 b 9 8 n41 n57 a 9 9 n41 n57 b 9 9 n61 n57 a 9 10 n61 n57 b 9 10 n73 n57 a 9 11 n73 n57 b 9 11 n80 n57 a 9 12 n80 n57 b 9 12 0 n57 a 9 13 1 n57 b 9 13 
+n0 n67 a 10 1 n0 n67 b 10 1 n3 n67 a 10 2 n3 n67 b 10 2 n11 n67 a 10 3 n11 n67 b 10 3 n15 n67 a 10 4 n15 n67 b 10 4 n21 n67 a 10 5 n21 n67 b 10 5 n35 n67 a 10 6 n35 n67 b 10 6 n36 n67 a 10 7 n36 n67 b 10 7 n37 n67 a 10 8 n37 n67 b 10 8 n41 n67 a 10 9 n41 n67 b 10 9 n61 n67 a 10 10 n61 n67 b 10 10 n73 n67 a 10 11 n73 n67 b 10 11 n80 n67 a 10 12 n80 n67 b 10 12 0 n67 a 10 13 1 n67 b 10 13 
+n0 n72 a 11 1 n0 n72 b 11 1 n3 n72 a 11 2 n3 n72 b 11 2 n11 n72 a 11 3 n11 n72 b 11 3 n15 n72 a 11 4 n15 n72 b 11 4 n21 n72 a 11 5 n21 n72 b 11 5 n35 n72 a 11 6 n35 n72 b 11 6 n36 n72 a 11 7 n36 n72 b 11 7 n37 n72 a 11 8 n37 n72 b 11 8 n41 n72 a 11 9 n41 n72 b 11 9 n61 n72 a 11 10 n61 n72 b 11 10 n73 n72 a 11 11 n73 n72 b 11 11 n80 n72 a 11 12 n80 n72 b 11 12 0 n72 a 11 13 1 n72 b 11 13 
+n0 n75 a 12 1 n0 n75 b 12 1 n3 n75 a 12 2 n3 n75 b 12 2 n11 n75 a 12 3 n11 n75 b 12 3 n15 n75 a 12 4 n15 n75 b 12 4 n21 n75 a 12 5 n21 n75 b 12 5 n35 n75 a 12 6 n35 n75 b 12 6 n36 n75 a 12 7 n36 n75 b 12 7 n37 n75 a 12 8 n37 n75 b 12 8 n41 n75 a 12 9 n41 n75 b 12 9 n61 n75 a 12 10 n61 n75 b 12 10 n73 n75 a 12 11 n73 n75 b 12 11 n80 n75 a 12 12 n80 n75 b 12 12 0 n75 a 12 13 1 n75 b 12 13 
+n0 n78 a 13 1 n0 n78 b 13 1 n3 n78 a 13 2 n3 n78 b 13 2 n11 n78 a 13 3 n11 n78 b 13 3 n15 n78 a 13 4 n15 n78 b 13 4 n21 n78 a 13 5 n21 n78 b 13 5 n35 n78 a 13 6 n35 n78 b 13 6 n36 n78 a 13 7 n36 n78 b 13 7 n37 n78 a 13 8 n37 n78 b 13 8 n41 n78 a 13 9 n41 n78 b 13 9 n61 n78 a 13 10 n61 n78 b 13 10 n73 n78 a 13 11 n73 n78 b 13 11 n80 n78 a 13 12 n80 n78 b 13 12 0 n78 a 13 13 1 n78 b 13 13 
+n0 n80 a 14 1 n0 n80 b 14 1 n3 n80 a 14 2 n3 n80 b 14 2 n11 n80 a 14 3 n11 n80 b 14 3 n15 n80 a 14 4 n15 n80 b 14 4 n21 n80 a 14 5 n21 n80 b 14 5 n35 n80 a 14 6 n35 n80 b 14 6 n36 n80 a 14 7 n36 n80 b 14 7 n37 n80 a 14 8 n37 n80 b 14 8 n41 n80 a 14 9 n41 n80 b 14 9 n61 n80 a 14 10 n61 n80 b 14 10 n73 n80 a 14 11 n73 n80 b 14 11 n80 n80 a 14 12 n80 n80 b 14 12 0 n80 a 14 13 1 n80 b 14 13 
+*********************************************
+
+*********************************************
+ printing output mapping matrix 
+
+n4 n6 a 1 1 n4 n6 b 1 1 n10 n6 a 1 2 n10 n6 b 1 2 n33 n6 a 1 3 n33 n6 b 1 3 n39 n6 a 1 4 n39 n6 b 1 4 n66 n6 a 1 5 n66 n6 b 1 5 n70 n6 a 1 6 n70 n6 b 1 6 n71 n6 a 1 7 n71 n6 b 1 7 n79 n6 a 1 8 n79 n6 b 1 8 
+n4 n9 a 2 1 n4 n9 b 2 1 n10 n9 a 2 2 n10 n9 b 2 2 n33 n9 a 2 3 n33 n9 b 2 3 n39 n9 a 2 4 n39 n9 b 2 4 n66 n9 a 2 5 n66 n9 b 2 5 n70 n9 a 2 6 n70 n9 b 2 6 n71 n9 a 2 7 n71 n9 b 2 7 n79 n9 a 2 8 n79 n9 b 2 8 
+n4 n42 a 3 1 n4 n42 b 3 1 n10 n42 a 3 2 n10 n42 b 3 2 n33 n42 a 3 3 n33 n42 b 3 3 n39 n42 a 3 4 n39 n42 b 3 4 n66 n42 a 3 5 n66 n42 b 3 5 n70 n42 a 3 6 n70 n42 b 3 6 n71 n42 a 3 7 n71 n42 b 3 7 n79 n42 a 3 8 n79 n42 b 3 8 
+n4 n48 a 4 1 n4 n48 b 4 1 n10 n48 a 4 2 n10 n48 b 4 2 n33 n48 a 4 3 n33 n48 b 4 3 n39 n48 a 4 4 n39 n48 b 4 4 n66 n48 a 4 5 n66 n48 b 4 5 n70 n48 a 4 6 n70 n48 b 4 6 n71 n48 a 4 7 n71 n48 b 4 7 n79 n48 a 4 8 n79 n48 b 4 8 
+n4 n56 a 5 1 n4 n56 b 5 1 n10 n56 a 5 2 n10 n56 b 5 2 n33 n56 a 5 3 n33 n56 b 5 3 n39 n56 a 5 4 n39 n56 b 5 4 n66 n56 a 5 5 n66 n56 b 5 5 n70 n56 a 5 6 n70 n56 b 5 6 n71 n56 a 5 7 n71 n56 b 5 7 n79 n56 a 5 8 n79 n56 b 5 8 
+n4 n65 a 6 1 n4 n65 b 6 1 n10 n65 a 6 2 n10 n65 b 6 2 n33 n65 a 6 3 n33 n65 b 6 3 n39 n65 a 6 4 n39 n65 b 6 4 n66 n65 a 6 5 n66 n65 b 6 5 n70 n65 a 6 6 n70 n65 b 6 6 n71 n65 a 6 7 n71 n65 b 6 7 n79 n65 a 6 8 n79 n65 b 6 8 
+n4 n68 a 7 1 n4 n68 b 7 1 n10 n68 a 7 2 n10 n68 b 7 2 n33 n68 a 7 3 n33 n68 b 7 3 n39 n68 a 7 4 n39 n68 b 7 4 n66 n68 a 7 5 n66 n68 b 7 5 n70 n68 a 7 6 n70 n68 b 7 6 n71 n68 a 7 7 n71 n68 b 7 7 n79 n68 a 7 8 n79 n68 b 7 8 
+n4 n77 a 8 1 n4 n77 b 8 1 n10 n77 a 8 2 n10 n77 b 8 2 n33 n77 a 8 3 n33 n77 b 8 3 n39 n77 a 8 4 n39 n77 b 8 4 n66 n77 a 8 5 n66 n77 b 8 5 n70 n77 a 8 6 n70 n77 b 8 6 n71 n77 a 8 7 n71 n77 b 8 7 n79 n77 a 8 8 n79 n77 b 8 8 
+*********************************************
+
+Execution time: 0 milliseconds
+total time: 50 milliseconds
+Shared BDD size =    756 nodes.
+Ins/Outs =   14/   8.  Total supp =    93.  Total unate =    23.
+Glob BDDs =     0.00 sec
+Unateness =     0.00 sec
+Total     =     0.00 sec
+CNF stats: Vars =     44. Clauses =     129. Literals =      362.   Time =     0.00 sec

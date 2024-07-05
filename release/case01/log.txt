@@ -1,0 +1,102 @@
+no of PIs in c1 is 5
+
+no of PIs in c2 is 5
+
+*********************************************
+read strash aig cnf
+
+reading verilog: c1
+verilog is read: c1
+
+printing stats of: c1 before strashing
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  nd =     9  edge =     16  aig  =    13  lev = 3
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c1
+
+printing stats of: c1 after strashing
+Structural support info:
+    0                    h0 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+    1                    h1 :  Cone =     5.  Supp =     4. (PIs =     4. FFs =     0.)
+    2                    m0 :  Cone =     2.  Supp =     3. (PIs =     3. FFs =     0.)
+    3                    m1 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  and =     12  lev =  3
+
+constructing AIG of: c1
+AIG is constructed: c1
+
+constructing CNF of: c1
+CNF is constructed: c1
+
+constructing simplied verilog of: c1
+Verilog file is saved: c1
+
+*********************************************
+
+*********************************************
+read strash aig cnf
+
+reading verilog: c2
+verilog is read: c2
+
+printing stats of: c2 before strashing
+CNF stats: Vars =     14. Clauses =      29. Literals =       69.   Time =     0.00 sec
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  nd =     7  edge =     14  aig  =    13  lev = 2
+
+
+strash; balance; rewrite; refactor; balance; rewrite; balance; rewrite -z; balance;: 
+circuit simplification done:c2
+
+printing stats of: c2 after strashing
+Structural support info:
+    0                    u0 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+    1                    u1 :  Cone =     3.  Supp =     4. (PIs =     4. FFs =     0.)
+    2                    w0 :  Cone =     2.  Supp =     3. (PIs =     3. FFs =     0.)
+    3                    w1 :  Cone =     1.  Supp =     2. (PIs =     2. FFs =     0.)
+[1;37mtop                           :[0m i/o =    5/    4  lat =    0  and =     12  lev =  3
+
+constructing AIG of: c2
+AIG is constructed: c2
+
+constructing CNF of: c2
+CNF is constructed: c2
+
+constructing simplied verilog of: c2
+Verilog file is saved: c2
+
+*********************************************
+
+verilog of c1_data/c1_new.v parsed
+
+verilog of c2_data/c2_new.v parsed
+
+writing pi po and assigns of c1
+
+writing pi po and assigns of c2
+
+Preprocess Time: 38 milliseconds
+*********************************************
+ printing input mapping matrix 
+
+a0 x0 a 1 1 a0 x0 b 1 1 a1 x0 a 1 2 a1 x0 b 1 2 b1 x0 a 1 3 b1 x0 b 1 3 b0 x0 a 1 4 b0 x0 b 1 4 c x0 a 1 5 c x0 b 1 5 0 x0 a 1 6 1 x0 b 1 6 
+a0 x1 a 2 1 a0 x1 b 2 1 a1 x1 a 2 2 a1 x1 b 2 2 b1 x1 a 2 3 b1 x1 b 2 3 b0 x1 a 2 4 b0 x1 b 2 4 c x1 a 2 5 c x1 b 2 5 0 x1 a 2 6 1 x1 b 2 6 
+a0 y0 a 3 1 a0 y0 b 3 1 a1 y0 a 3 2 a1 y0 b 3 2 b1 y0 a 3 3 b1 y0 b 3 3 b0 y0 a 3 4 b0 y0 b 3 4 c y0 a 3 5 c y0 b 3 5 0 y0 a 3 6 1 y0 b 3 6 
+a0 y1 a 4 1 a0 y1 b 4 1 a1 y1 a 4 2 a1 y1 b 4 2 b1 y1 a 4 3 b1 y1 b 4 3 b0 y1 a 4 4 b0 y1 b 4 4 c y1 a 4 5 c y1 b 4 5 0 y1 a 4 6 1 y1 b 4 6 
+a0 z a 5 1 a0 z b 5 1 a1 z a 5 2 a1 z b 5 2 b1 z a 5 3 b1 z b 5 3 b0 z a 5 4 b0 z b 5 4 c z a 5 5 c z b 5 5 0 z a 5 6 1 z b 5 6 
+*********************************************
+
+*********************************************
+ printing output mapping matrix 
+
+h0 u0 a 1 1 h0 u0 b 1 1 h1 u0 a 1 2 h1 u0 b 1 2 m0 u0 a 1 3 m0 u0 b 1 3 m1 u0 a 1 4 m1 u0 b 1 4 
+h0 u1 a 2 1 h0 u1 b 2 1 h1 u1 a 2 2 h1 u1 b 2 2 m0 u1 a 2 3 m0 u1 b 2 3 m1 u1 a 2 4 m1 u1 b 2 4 
+h0 w0 a 3 1 h0 w0 b 3 1 h1 w0 a 3 2 h1 w0 b 3 2 m0 w0 a 3 3 m0 w0 b 3 3 m1 w0 a 3 4 m1 w0 b 3 4 
+h0 w1 a 4 1 h0 w1 b 4 1 h1 w1 a 4 2 h1 w1 b 4 2 m0 w1 a 4 3 m0 w1 b 4 3 m1 w1 a 4 4 m1 w1 b 4 4 
+*********************************************
+
+Execution time: 0 milliseconds
+
+total time: 38 milliseconds
+
+CNF stats: Vars =     14. Clauses =      29. Literals =       69.   Time =     0.00 sec
